@@ -1,0 +1,25 @@
+spring:
+  banner:
+    image:
+      location: static/banner.png
+duck:
+   duckName: DonDonald Fauntleroy Duck
+   totalCount: 1
+
+server:
+  servlet:
+    context-path: /xiaour-dubbo
+  port: 8081
+dubbo:
+  scan:
+    base-packages: com.github.xiaour.service
+  application:
+    id: xiaour-provider
+    name: xiaour-provider
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    id: my-registry
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880

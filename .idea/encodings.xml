@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/SpringBootDemo/SpringBootDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBootDemoV2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBootKafkaDemo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubboConsumer/dubboConsumer" charset="UTF-8" />
+  </component>
+</project>
