@@ -1,4 +1,4 @@
-# SpringBootDemo
+⭐️ SpringBootDemo
 本代码集成了SpringBoot+MyBatis+Redis+MySql。
 最新的部分经网友指正已经把冗余的代码去掉了，大家clone到本地后直接转成maven项目应该就可以运行了，项目中使用到的数据库表如下
 
@@ -16,5 +16,16 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1', 'xiaour', '1231');
+INSERT INTO `user_info` VALUES ('1', 'xiaour', '18');
+
+⭐️ SpringBootDemoV2
+代码主要和SpringBootDemo的区别是使用了Springboot2.0
+
+⭐️ SpringBootKafkaDemo
+Springboot2.0继承了Kafka消息中间件
+
+⭐️ SpringBootRocketMqDemo
+Springboot2.0继承了RocketMQ4.3消息中间件
+
+
 
