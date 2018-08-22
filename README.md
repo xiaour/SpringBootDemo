@@ -33,6 +33,7 @@ INSERT INTO `user_info` VALUES ('1', 'xiaour', '18');
 
 ⭐️ SpringBootDemoV2
 代码主要和SpringBootDemo的区别是使用了Springboot2.0
+2018.08.22 添加了Twitter ID生成算法的工具，每秒支持12万ID生成。
 
 ⭐️ SpringBootKafkaDemo
 Springboot2.0继承了Kafka消息中间件
