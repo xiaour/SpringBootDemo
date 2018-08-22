@@ -86,12 +86,12 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 		</dependency>
-		
+<!--
         <dependency>
             <groupId>com.github.xiaour</groupId>
             <artifactId>spring.boot.sapi.starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
 
 
     </dependencies>
