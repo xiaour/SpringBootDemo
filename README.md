@@ -1,6 +1,9 @@
 ## 相关文章
+
 1.[SpringMVC配置太多？试试SpringBoot](https://xiaour.github.io/2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/)
+
 2.[Springboot集成Kafka](https://xiaour.github.io/2018/05/23/Springboot_integrated_Kafka/)
+
 3.[Springboot集成RocketMQ](https://xiaour.github.io/2018/08/16/SpringbootRocketMQ/)
 
 
@@ -9,6 +12,7 @@
 本代码集成了SpringBoot+MyBatis+Redis+MySql。
 最新的部分经网友指正已经把冗余的代码去掉了，大家clone到本地后直接转成maven项目应该就可以运行了，项目中使用到的数据库表如下
 
+```sql
 -- ----------------------------
 -- Table structure for `user_info`
 -- ----------------------------
@@ -24,6 +28,7 @@ CREATE TABLE `user_info` (
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('1', 'xiaour', '18');
+```
 
 ⭐️ SpringBootDemoV2
 代码主要和SpringBootDemo的区别是使用了Springboot2.0
