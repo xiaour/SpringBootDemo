@@ -44,6 +44,6 @@ Springboot2.0继承了RocketMQ4.3消息中间件
 
 
 ---------------------------------
-有兴趣的朋友可以关注一下最新开源的[spring.boot.sapi.starter](https://github.com/xiaour/spring.boot.sapi.starter）
-
+有兴趣的朋友可以关注一下最新开源的
+[spring.boot.sapi.starter](https://github.com/xiaour/spring.boot.sapi.starter)
 
