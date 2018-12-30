@@ -1,8 +1,6 @@
 package com.github.xiaour.utils;
 
 
-
-import com.github.xiaour.constants.Api;
 import com.github.xiaour.exception.OApiException;
 import com.google.gson.JsonObject;
 import org.apache.http.HttpEntity;
@@ -28,24 +26,24 @@ public class HttpHelper {
 
     private static JsonObject jsonObject = null;
 
-    static{
-        jsonObject  = new JsonObject();
+    static {
+        jsonObject = new JsonObject();
     }
 
-    public static synchronized JsonObject instance(){
-        if(jsonObject == null){
-            jsonObject =  new JsonObject();
+    public static synchronized JsonObject instance() {
+        if (jsonObject == null) {
+            jsonObject = new JsonObject();
         }
         return jsonObject;
     }
-	
 
-	public static JsonObject httpGet(String url) throws OApiException {
+
+    public static JsonObject httpGet(String url) throws OApiException {
         HttpGet httpGet = new HttpGet(url);
         CloseableHttpResponse response = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
         RequestConfig requestConfig = RequestConfig.custom().
-        		setSocketTimeout(10000).setConnectTimeout(10000).build();
+                setSocketTimeout(10000).setConnectTimeout(10000).build();
         httpGet.setConfig(requestConfig);
 
         try {
@@ -61,31 +59,31 @@ public class HttpHelper {
 
             }
         } catch (IOException e) {
-        	throw new OApiException(e);
+            throw new OApiException(e);
         } finally {
             if (response != null) try {
                 response.close();
             } catch (IOException e) {
-            	throw new OApiException(e);
+                throw new OApiException(e);
             }
         }
 
         return null;
     }
-	
-	
-	public static String postXmlStr(String url,String xmlStr) throws OApiException {
+
+
+    public static String postXmlStr(String url, String xmlStr) throws OApiException {
         HttpPost httpPost = new HttpPost(url);
         CloseableHttpResponse response = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
         RequestConfig requestConfig = RequestConfig.custom().
-        		setSocketTimeout(10000).setConnectTimeout(10000).build();
+                setSocketTimeout(10000).setConnectTimeout(10000).build();
         httpPost.setConfig(requestConfig);
         httpPost.addHeader("Content-Type", "application/xml");
         try {
-        	StringEntity requestEntity = new StringEntity(xmlStr, "utf-8");
+            StringEntity requestEntity = new StringEntity(xmlStr, "utf-8");
             httpPost.setEntity(requestEntity);
-            
+
             response = httpClient.execute(httpPost, new BasicHttpContext());
 
             if (response.getStatusLine().getStatusCode() != 200) {
@@ -98,30 +96,30 @@ public class HttpHelper {
                 return resultStr;
             }
         } catch (IOException e) {
-        	throw new OApiException(e);
+            throw new OApiException(e);
         } finally {
             if (response != null) try {
                 response.close();
             } catch (IOException e) {
-            	throw new OApiException(e);
+                throw new OApiException(e);
             }
         }
 
         return null;
     }
-	
-	
-	public static JsonObject httpPost(String url, Object data) throws OApiException {
+
+
+    public static JsonObject httpPost(String url, Object data) throws OApiException {
         HttpPost httpPost = new HttpPost(url);
         CloseableHttpResponse response = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
         RequestConfig requestConfig = RequestConfig.custom().
-        		setSocketTimeout(10000).setConnectTimeout(10000).build();
+                setSocketTimeout(10000).setConnectTimeout(10000).build();
         httpPost.setConfig(requestConfig);
         httpPost.addHeader("Content-Type", "application/json");
         try {
-        	String dataStr=JsonUtil.getJsonString(data);
-        	StringEntity requestEntity = new StringEntity(dataStr, "utf-8");
+            String dataStr = JsonUtil.getJsonString(data);
+            StringEntity requestEntity = new StringEntity(dataStr, "utf-8");
             httpPost.setEntity(requestEntity);
             response = httpClient.execute(httpPost, new BasicHttpContext());
 
@@ -129,26 +127,25 @@ public class HttpHelper {
 
                 return null;
             }
-            
+
             HttpEntity entity = response.getEntity();
-            
+
             if (entity != null) {
                 String resultStr = EntityUtils.toString(entity, "utf-8");
                 return jsonObject.getAsJsonObject(resultStr);
             }
         } catch (IOException e) {
-        	throw new OApiException(e);
+            throw new OApiException(e);
         } finally {
             if (response != null) try {
                 response.close();
             } catch (IOException e) {
-            	throw new OApiException(e);
+                throw new OApiException(e);
             }
         }
 
         return null;
     }
-
 
 
     /**
@@ -159,7 +156,7 @@ public class HttpHelper {
      * @param parameters:parameter参数
      * @return
      */
-    public static <T> T getByRest(String url, Class<T> returnClassName, Map<String, Object> parameters){
+    public static <T> T getByRest(String url, Class<T> returnClassName, Map<String, Object> parameters) {
         if (parameters == null) {
             return restTemplate.getForObject(url, returnClassName);
         }
@@ -175,10 +172,10 @@ public class HttpHelper {
      * @param jsonBody
      * @return
      */
-    public static <T> T postByRest(String url,Class<T> returnClassName,Map<String,Object> inputParameter,String jsonBody){
+    public static <T> T postByRest(String url, Class<T> returnClassName, Map<String, Object> inputParameter, String jsonBody) {
 
         org.springframework.http.HttpEntity<String> formEntity = new org.springframework.http.HttpEntity<>(jsonBody);
-        if (inputParameter==null) {
+        if (inputParameter == null) {
             return restTemplate.postForObject(url, formEntity, returnClassName);
         }
         return restTemplate.postForObject(url, formEntity, returnClassName, inputParameter);
@@ -208,12 +205,12 @@ public class HttpHelper {
 
 
         try {
-            JsonObject jo= HttpHelper.httpPost("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=7_LptTbnbGrlk8OrF3fSreUPozwvDXm_lE1LB-lqVXxD5VYW2XLcRCQ3G4FTwhe1LR670PkaItKHZm7TY4Ms-ECf8oDslqhyE3rUMo3GrqKLOFs8owbj9SSkF3Y6kYqd0GiYtzbgNLopPeP8AiDNYdABAXHS",null);
+            JsonObject jo = HttpHelper.httpPost("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=7_LptTbnbGrlk8OrF3fSreUPozwvDXm_lE1LB-lqVXxD5VYW2XLcRCQ3G4FTwhe1LR670PkaItKHZm7TY4Ms-ECf8oDslqhyE3rUMo3GrqKLOFs8owbj9SSkF3Y6kYqd0GiYtzbgNLopPeP8AiDNYdABAXHS", null);
             System.out.println(jo.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-	  
-	
+
+
 }

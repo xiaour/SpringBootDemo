@@ -19,6 +19,6 @@ import com.github.xiaour.service.DubboService;
 public class DubboServiceImpl implements DubboService {
     @Override
     public String hello(String name) {
-        return "Hello,"+name;
+        return "Hello," + name;
     }
 }

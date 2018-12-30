@@ -12,7 +12,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
- * 
+ *
  * @ClassName Application
  * @author Zhang.Tao
  * @Date 2017年4月27日 下午5:30:34
@@ -23,24 +23,25 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @ServletComponentScan
 @EnableAutoConfiguration
 @MapperScan("com.xiaour.spring.boot.mapper")
-public class Application  extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
+public class Application extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
 
-	@Value("${server.port}")
-	private int port;//应用的端口
-	/**
-	 * 启动入口
-	 * @param args
-	 */
-    public static void main(String ... args){
+    @Value("${server.port}")
+    private int port;//应用的端口
+
+    /**
+     * 启动入口
+     * @param args
+     */
+    public static void main(String... args) {
         SpringApplication.run(Application.class, args);
     }
 
     /**
      * 自定义端口
      */
-	@Override
-	public void customize(ConfigurableEmbeddedServletContainer container) {
-		container.setPort(port);
-	}
+    @Override
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+        container.setPort(port);
+    }
 
 }

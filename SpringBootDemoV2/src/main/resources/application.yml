@@ -3,8 +3,8 @@ spring:
     image:
       location: static/banner.png
 duck:
-   duckName: DonDonald Fauntleroy Duck
-   totalCount: 1
+  duckName: DonDonald Fauntleroy Duck
+  totalCount: 1
 
 server:
   servlet:

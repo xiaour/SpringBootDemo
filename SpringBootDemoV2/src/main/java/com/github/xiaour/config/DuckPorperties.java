@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
  * @Date: 2018/3/1 下午5:04
  */
 @Configuration
-@ConfigurationProperties(prefix="duck")
-public class DuckPorperties{
+@ConfigurationProperties(prefix = "duck")
+public class DuckPorperties {
 
     private String duckName;
 
-    private int  totalCount;
+    private int totalCount;
 
     public String getDuckName() {
         return duckName;

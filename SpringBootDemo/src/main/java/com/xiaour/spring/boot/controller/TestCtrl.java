@@ -1,21 +1,17 @@
 package com.xiaour.spring.boot.controller;
 
 
+import com.xiaour.spring.boot.entity.UserInfo;
+import com.xiaour.spring.boot.mapper.UserInfoMapper;
 import com.xiaour.spring.boot.service.RedisService;
+import com.xiaour.spring.boot.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
-import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xiaour.spring.boot.entity.UserInfo;
-import com.xiaour.spring.boot.mapper.UserInfoMapper;
-import com.xiaour.spring.boot.utils.JsonUtil;
-
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -23,20 +19,20 @@ import java.util.Map;
  * Created by xiaour on 2017/4/19.
  */
 @RestController
-@RequestMapping(value="/test")
+@RequestMapping(value = "/test")
 public class TestCtrl {
-	
-	@Autowired
-	private RedisService redisService;
-	
-	@Autowired  
-    private UserInfoMapper userInfoMapper;  
 
-    @RequestMapping(value="/index")
-    public String index(){
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private UserInfoMapper userInfoMapper;
+
+    @RequestMapping(value = "/index")
+    public String index() {
         return "hello world";
     }
-    
+
     /**
      * 向redis存储值
      * @param key
@@ -44,63 +40,63 @@ public class TestCtrl {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/set")  
-    public String set(String key, String value) throws Exception{
+    @RequestMapping("/set")
+    public String set(String key, String value) throws Exception {
 
         redisService.set(key, value);
-        return "success";  
-    }  
-    
+        return "success";
+    }
+
     /**
      * 获取redis中的值
      * @param key
      * @return
      */
-    @RequestMapping("/get")  
-    public String get(String key){  
+    @RequestMapping("/get")
+    public String get(String key) {
         try {
-			return redisService.get(key);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";  
-    }  
-    
+            return redisService.get(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     /**
      * 获取数据库中的用户
      * @param id
      * @return
      */
-    @RequestMapping("/getUser/{id}")  
-    public String get(@PathVariable("id")int id){  
+    @RequestMapping("/getUser/{id}")
+    public String get(@PathVariable("id") int id) {
         try {
-        	UserInfo user= userInfoMapper.selectByPrimaryKey(id);
-			return JsonUtil.getJsonString(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";  
+            UserInfo user = userInfoMapper.selectByPrimaryKey(id);
+            return JsonUtil.getJsonString(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 
     public static void main(String[] args) {
-        Map<String,Object> keyMap= new HashMap<>();
-        keyMap.put("id","编号");
-        keyMap.put("name","名称");
+        Map<String, Object> keyMap = new HashMap<>();
+        keyMap.put("id", "编号");
+        keyMap.put("name", "名称");
 
-        String [] cnCloumn={"编号","名称"};
+        String[] cnCloumn = {"编号", "名称"};
 
         System.out.println(Arrays.asList(convertMap(keyMap, cnCloumn)));
 
     }
 
-    public static String[] convertMap(Map<String,Object> keyMap,String [] dataList){
+    public static String[] convertMap(Map<String, Object> keyMap, String[] dataList) {
 
-        for(int i=0;i<dataList.length;i++){
+        for (int i = 0; i < dataList.length; i++) {
 
-            for(Map.Entry<String, Object> m:keyMap.entrySet()){
-                if(m.getValue().equals(dataList[i])){
-                   dataList[i]=m.getKey();
+            for (Map.Entry<String, Object> m : keyMap.entrySet()) {
+                if (m.getValue().equals(dataList[i])) {
+                    dataList[i] = m.getKey();
                 }
             }
         }
@@ -109,7 +105,7 @@ public class TestCtrl {
     }
 
 
-    public static String getName(String name,String add){
+    public static String getName(String name, String add) {
         return null;
     }
 
@@ -136,7 +132,6 @@ public class TestCtrl {
         String clazzName4 = Thread.currentThread().getStackTrace()[2].getClassName();
         System.out.println(clazzName4);
     }
-
 
 
 }

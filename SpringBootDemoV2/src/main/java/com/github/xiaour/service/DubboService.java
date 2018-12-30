@@ -8,7 +8,7 @@ package com.github.xiaour.service;
 
 public interface DubboService {
 
-     String hello(String name);
+    String hello(String name);
 
 
 }
