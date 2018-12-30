@@ -26,10 +26,10 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
   redis:
-    host: 192.168.2.5
+    host: 192.168.99.100
     #redis密码，没有密码的可以用～表示
     password: ~
-    port: 6381
+    port: 6379
     pool:
       max-active: 100
       max-idle: 10

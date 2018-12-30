@@ -23,6 +23,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @ServletComponentScan
 @EnableAutoConfiguration
 @MapperScan("com.xiaour.spring.boot.dao")
+//@SpringBootApplication
 public class Application extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
 
     @Value("${server.port}")

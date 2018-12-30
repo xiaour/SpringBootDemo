@@ -1,15 +1,15 @@
 package com.xiaour.spring.boot.controller;
 
 
-import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.dao.UserInfoDao;
+import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.service.RedisService;
-import com.xiaour.spring.boot.utils.JsonUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,10 +22,10 @@ import java.util.Map;
 @RequestMapping(value = "/test")
 public class TestCtrl {
 
-    @Autowired
+    @Resource
     private RedisService redisService;
 
-    @Autowired
+    @Resource
     private UserInfoDao userInfoDao;
 
     @RequestMapping(value = "/index")
@@ -38,10 +38,9 @@ public class TestCtrl {
      * @param key
      * @param value
      * @return
-     * @throws Exception
      */
     @RequestMapping("/set")
-    public String set(String key, String value) throws Exception {
+    public String set(String key, String value) {
 
         redisService.set(key, value);
         return "success";
@@ -67,17 +66,15 @@ public class TestCtrl {
      * @param id
      * @return
      */
-    @RequestMapping("/getUser/{id}")
-    public String get(@PathVariable("id") int id) {
+    @GetMapping("/getUser/{id}")
+    public UserInfo get(@PathVariable("id") int id) {
         try {
-            UserInfo user = userInfoDao.selectByPrimaryKey(id);
-            return JsonUtil.getJsonString(user);
+            return userInfoDao.selectByPrimaryKey(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
-
 
     public static void main(String[] args) {
         Map<String, Object> keyMap = new HashMap<>();

@@ -29,41 +29,31 @@ public class RedisServiceImpl implements RedisService {
     private RedisTemplate<String, ?> redisTemplate;
 
     @Override
-    public boolean set(final String key, final String value) throws Exception {
+    public boolean set(final String key, final String value) {
         Assert.hasText(key, "Key is not empty.");
-        boolean result = redisTemplate.execute(new RedisCallback<Boolean>() {
-            @Override
-            public Boolean doInRedis(RedisConnection connection) throws DataAccessException {
-                RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                connection.set(serializer.serialize(key), serializer.serialize(value));
-                return true;
-            }
+        boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+            RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+            connection.set(serializer.serialize(key), serializer.serialize(value));
+            return true;
         });
         return result;
     }
 
-    public String get(final String key) throws Exception {
+    public String get(final String key) {
         Assert.hasText(key, "Key is not empty.");
-        String result = redisTemplate.execute(new RedisCallback<String>() {
-            @Override
-            public String doInRedis(RedisConnection connection) throws DataAccessException {
-                RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                byte[] value = connection.get(serializer.serialize(key));
-                return serializer.deserialize(value);
-            }
+        return redisTemplate.execute((RedisCallback<String>) connection -> {
+            RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+            byte[] value = connection.get(serializer.serialize(key));
+            return serializer.deserialize(value);
         });
-        return result;
     }
 
-    public void del(final String key) throws Exception {
+    public void del(final String key) {
         Assert.hasText(key, "Key is not empty.");
 
-        redisTemplate.execute(new RedisCallback<Long>() {
-            @Override
-            public Long doInRedis(RedisConnection conn) throws DataAccessException {
-                RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                return conn.del(serializer.serialize(key));
-            }
+        redisTemplate.execute((RedisCallback<Long>) conn -> {
+            RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+            return conn.del(serializer.serialize(key));
         });
     }
 
@@ -74,7 +64,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public <T> boolean setList(String key, List<T> list) throws Exception {
+    public <T> boolean setList(String key, List<T> list) {
         Assert.hasText(key, "Key is not empty.");
 
         String value = JsonUtil.getJsonString(list);
@@ -82,7 +72,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public <T> List<T> getList(String key, Class<T> clz) throws Exception {
+    public <T> List<T> getList(String key, Class<T> clz) {
 
         Assert.hasText(key, "Key is not empty.");
 
@@ -95,39 +85,31 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public long lpush(final String key, Object obj) throws Exception {
+    public long lpush(final String key, Object obj) {
         Assert.hasText(key, "Key is not empty.");
 
         final String value = JsonUtil.getJsonString(obj);
-        long result = redisTemplate.execute(new RedisCallback<Long>() {
-            @Override
-            public Long doInRedis(RedisConnection connection) throws DataAccessException {
-                RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                long count = connection.lPush(serializer.serialize(key), serializer.serialize(value));
-                return count;
-            }
+        return redisTemplate.execute((RedisCallback<Long>) connection -> {
+            RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+            return (long) connection.lPush(serializer.serialize(key), serializer.serialize(value));
+        });
+    }
+
+    @Override
+    public long rpush(final String key, Object obj) {
+        Assert.hasText(key, "Key is not empty.");
+
+        final String value = JsonUtil.getJsonString(obj);
+        long result = redisTemplate.execute((RedisCallback<Long>) connection -> {
+            RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+            long count = connection.rPush(serializer.serialize(key), serializer.serialize(value));
+            return count;
         });
         return result;
     }
 
     @Override
-    public long rpush(final String key, Object obj) throws Exception {
-        Assert.hasText(key, "Key is not empty.");
-
-        final String value = JsonUtil.getJsonString(obj);
-        long result = redisTemplate.execute(new RedisCallback<Long>() {
-            @Override
-            public Long doInRedis(RedisConnection connection) throws DataAccessException {
-                RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                long count = connection.rPush(serializer.serialize(key), serializer.serialize(value));
-                return count;
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public void hmset(String key, Object obj) throws Exception {
+    public void hmset(String key, Object obj) {
         Assert.hasText(key, "Key is not empty.");
 
         Map<byte[], byte[]> data = JsonUtil.readJsonByteMap(JsonUtil.getJsonString(obj));
@@ -142,7 +124,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public <T> T hget(String key, Class<T> clz) throws Exception {
+    public <T> T hget(String key, Class<T> clz) {
         Assert.hasText(key, "Key is not empty.");
 
         return redisTemplate.execute(new RedisCallback<T>() {
@@ -165,7 +147,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public <T> List<T> hmGetAll(String key, Class<T> clz) throws Exception {
+    public <T> List<T> hmGetAll(String key, Class<T> clz) {
         Assert.hasText(key, "Key is not empty.");
 
         List<Map<String, Object>> dataList = new ArrayList<>();
@@ -191,7 +173,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public String lpop(final String key) throws Exception {
+    public String lpop(final String key) {
         Assert.hasText(key, "Key is not empty.");
 
         String result = redisTemplate.execute(new RedisCallback<String>() {

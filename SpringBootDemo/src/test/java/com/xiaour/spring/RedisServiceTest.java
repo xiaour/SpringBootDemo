@@ -1,9 +1,7 @@
 package com.xiaour.spring;
 
-import com.alibaba.fastjson.JSON;
 import com.xiaour.spring.boot.Application;
-import com.xiaour.spring.boot.entity.UserInfo;
-import com.xiaour.spring.boot.service.UserInfoService;
+import com.xiaour.spring.boot.service.RedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +10,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * test elasticsearch
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = {Application.class},
         initializers = {ConfigFileApplicationContextInitializer.class})
-public class UserInfoServiceTest {
+public class RedisServiceTest {
 
     @Autowired
-    private UserInfoService userInfoService;
+    private RedisService redisService;
 
     @Test
     public void test() {
-        UserInfo userInfo = userInfoService.selectByPrimaryKey(1);
-        System.out.println(JSON.toJSONString(userInfo));
+        String username = redisService.get("username");
+        System.out.println(username);
     }
 }

@@ -1,7 +1,7 @@
 package com.xiaour.spring.boot.service.impl;
 
-import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.dao.UserInfoDao;
+import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
