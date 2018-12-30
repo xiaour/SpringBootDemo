@@ -34,7 +34,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="t_hc_hiwork_wx_pay_info" domainObjectName="PayInfo"
+        <table tableName="user_info" domainObjectName="UserInfo"
                enableDeleteByPrimaryKey="false" enableInsert="false" enableUpdateByPrimaryKey="false"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
@@ -69,7 +69,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="t_hc_hiwork_wx_pay_info" domainObjectName="PayInfo"
+        <table tableName="user_info" domainObjectName="UserInfo"
                enableSelectByPrimaryKey="false" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
