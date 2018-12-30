@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaour.spring.boot.dao.write.PayInfoWriterDao">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_hc_hiwork_wx_pay_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.xiaour.spring.boot.entity.PayInfo">
+        insert into t_hc_hiwork_wx_pay_info (id, corp_id, platform_type,
+        pay_amount, user_count, payer,
+        oper_user_id, memo, ext_fields,
+        create_time, update_time)
+        values (#{id,jdbcType=BIGINT}, #{corpId,jdbcType=VARCHAR}, #{platformType,jdbcType=VARCHAR},
+        #{payAmount,jdbcType=DECIMAL}, #{userCount,jdbcType=INTEGER}, #{payer,jdbcType=VARCHAR},
+        #{operUserId,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{extFields,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.xiaour.spring.boot.entity.PayInfo">
+        insert into t_hc_hiwork_wx_pay_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="corpId != null">
+                corp_id,
+            </if>
+            <if test="platformType != null">
+                platform_type,
+            </if>
+            <if test="payAmount != null">
+                pay_amount,
+            </if>
+            <if test="userCount != null">
+                user_count,
+            </if>
+            <if test="payer != null">
+                payer,
+            </if>
+            <if test="operUserId != null">
+                oper_user_id,
+            </if>
+            <if test="memo != null">
+                memo,
+            </if>
+            <if test="extFields != null">
+                ext_fields,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="corpId != null">
+                #{corpId,jdbcType=VARCHAR},
+            </if>
+            <if test="platformType != null">
+                #{platformType,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmount != null">
+                #{payAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="userCount != null">
+                #{userCount,jdbcType=INTEGER},
+            </if>
+            <if test="payer != null">
+                #{payer,jdbcType=VARCHAR},
+            </if>
+            <if test="operUserId != null">
+                #{operUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="extFields != null">
+                #{extFields,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xiaour.spring.boot.entity.PayInfo">
+        update t_hc_hiwork_wx_pay_info
+        <set>
+            <if test="corpId != null">
+                corp_id = #{corpId,jdbcType=VARCHAR},
+            </if>
+            <if test="platformType != null">
+                platform_type = #{platformType,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmount != null">
+                pay_amount = #{payAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="userCount != null">
+                user_count = #{userCount,jdbcType=INTEGER},
+            </if>
+            <if test="payer != null">
+                payer = #{payer,jdbcType=VARCHAR},
+            </if>
+            <if test="operUserId != null">
+                oper_user_id = #{operUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                memo = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="extFields != null">
+                ext_fields = #{extFields,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xiaour.spring.boot.entity.PayInfo">
+        update t_hc_hiwork_wx_pay_info
+        set corp_id = #{corpId,jdbcType=VARCHAR},
+        platform_type = #{platformType,jdbcType=VARCHAR},
+        pay_amount = #{payAmount,jdbcType=DECIMAL},
+        user_count = #{userCount,jdbcType=INTEGER},
+        payer = #{payer,jdbcType=VARCHAR},
+        oper_user_id = #{operUserId,jdbcType=VARCHAR},
+        memo = #{memo,jdbcType=VARCHAR},
+        ext_fields = #{extFields,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

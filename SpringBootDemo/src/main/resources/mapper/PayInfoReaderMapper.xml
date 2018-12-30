@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaour.spring.boot.dao.read.PayInfoReaderDao">
+    <resultMap id="BaseResultMap" type="com.xiaour.spring.boot.entity.PayInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="corp_id" jdbcType="VARCHAR" property="corpId"/>
+        <result column="platform_type" jdbcType="VARCHAR" property="platformType"/>
+        <result column="pay_amount" jdbcType="DECIMAL" property="payAmount"/>
+        <result column="user_count" jdbcType="INTEGER" property="userCount"/>
+        <result column="payer" jdbcType="VARCHAR" property="payer"/>
+        <result column="oper_user_id" jdbcType="VARCHAR" property="operUserId"/>
+        <result column="memo" jdbcType="VARCHAR" property="memo"/>
+        <result column="ext_fields" jdbcType="VARCHAR" property="extFields"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, corp_id, platform_type, pay_amount, user_count, payer, oper_user_id, memo, ext_fields,
+        create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_hc_hiwork_wx_pay_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>
