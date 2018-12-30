@@ -35,7 +35,7 @@ spring:
       max-idle: 10
       max-wait: 100000
 mybatis:
-  type-aliases-package: com.xiaour.spring.boot.mapper
+  type-aliases-package: com.xiaour.spring.boot.dao
   mapper-locations: classpath:mapper/*.xml
   configLocation: classpath:mybatis-config.xml
 

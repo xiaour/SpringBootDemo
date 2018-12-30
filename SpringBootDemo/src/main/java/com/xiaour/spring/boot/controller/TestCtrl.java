@@ -2,7 +2,7 @@ package com.xiaour.spring.boot.controller;
 
 
 import com.xiaour.spring.boot.entity.UserInfo;
-import com.xiaour.spring.boot.mapper.UserInfoMapper;
+import com.xiaour.spring.boot.dao.UserInfoDao;
 import com.xiaour.spring.boot.service.RedisService;
 import com.xiaour.spring.boot.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class TestCtrl {
     private RedisService redisService;
 
     @Autowired
-    private UserInfoMapper userInfoMapper;
+    private UserInfoDao userInfoDao;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -70,7 +70,7 @@ public class TestCtrl {
     @RequestMapping("/getUser/{id}")
     public String get(@PathVariable("id") int id) {
         try {
-            UserInfo user = userInfoMapper.selectByPrimaryKey(id);
+            UserInfo user = userInfoDao.selectByPrimaryKey(id);
             return JsonUtil.getJsonString(user);
         } catch (Exception e) {
             e.printStackTrace();
