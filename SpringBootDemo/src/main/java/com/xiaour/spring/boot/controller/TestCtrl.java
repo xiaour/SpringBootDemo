@@ -1,9 +1,9 @@
 package com.xiaour.spring.boot.controller;
 
 
-import com.xiaour.spring.boot.dao.UserInfoDao;
 import com.xiaour.spring.boot.entity.UserInfo;
 import com.xiaour.spring.boot.service.RedisService;
+import com.xiaour.spring.boot.service.UserInfoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +26,7 @@ public class TestCtrl {
     private RedisService redisService;
 
     @Resource
-    private UserInfoDao userInfoDao;
+    private UserInfoService userInfoService;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -69,7 +69,7 @@ public class TestCtrl {
     @GetMapping("/getUser/{id}")
     public UserInfo get(@PathVariable("id") int id) {
         try {
-            return userInfoDao.selectByPrimaryKey(id);
+            return userInfoService.selectByPrimaryKey(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
