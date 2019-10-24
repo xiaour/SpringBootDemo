@@ -80,10 +80,4 @@ public class JsonUtil {
         return list;
     }
 
-
-    public static void main(String[] args) {
-        String json="{\"snapshots\":[{\"snapshot\":\"snapshot_129\",\"uuid\":\"kaM9ip2GQoCsT3wn38OcsQ\",\"version_id\":5040399,\"version\":\"5.4.3\",\"indices\":[\"metricbeat-2018.01.04\",\"metricbeat-2018.01.03\",\"metricbeat-2017.12.11\",\"metricbeat-2017.12.23\",\"metricbeat-2018.01.29\",\"metricbeat-2017.12.17\",\"metricbeat-2017.12.05\",\"metricbeat-2018.01.26\",\"metricbeat-2017.12.16\",\"metricbeat-2017.12.30\",\"metricbeat-2017.12.29\"],\"state\":\"SUCCESS\",\"duration_in_millis\":4310,\"failures\":[],\"shards\":{\"total\":321,\"failed\":0,\"successful\":321}}]}";
-
-        System.out.println(toMap(json));
-    }
 }
