@@ -12,7 +12,8 @@
 
 ⭐️ SpringBootDemo
 本代码集成了SpringBoot+MyBatis+Redis+MySql。
-最新的部分经网友指正已经把冗余的代码去掉了，大家clone到本地后直接转成maven项目应该就可以运行了，项目中使用到的数据库表如下
+最新的部分经网友指正已经把冗余的代码去掉了，代码部分和配置文件部分都有相关的注释；
+git clone 到本地后就可以运行了，项目中使用到的数据库表如下
 
 ```sql
 -- ----------------------------
@@ -42,6 +43,9 @@ Springboot2.0继承了Kafka消息中间件
 
 ⭐️ SpringBootRocketMqDemo
 Springboot2.0继承了RocketMQ4.3消息中间件
+
+⭐️ SpringWebfluxDemo
+Webflux Spring异步编程。
 
 
 ---------------------------------
