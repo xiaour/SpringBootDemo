@@ -8,6 +8,8 @@
 
 4.Webflux Spring异步编程，你将发现新大陆(代码已经部分上传，blog完善中...)
 
+5.[利用EasyExcel，两行代码开发一个和API结果一致的生成Excel功能](https://github.com/xiaour/EasyExport#readme)
+
 ## 代码部分
 
 ⭐️ SpringBootDemo
