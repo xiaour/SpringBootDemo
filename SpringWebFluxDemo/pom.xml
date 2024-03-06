@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.xiaour</groupId>
-    <artifactId>flux</artifactId>
+    <artifactId>fluxDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringWebFluxDemo</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project for Web Flux</description>
 
     <properties>
         <java.version>1.8</java.version>
